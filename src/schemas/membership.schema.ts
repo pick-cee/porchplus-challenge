@@ -1,10 +1,12 @@
 import {
     Column,
+    CreateDateColumn,
     Entity,
     JoinColumn,
     ManyToOne,
     OneToMany,
     PrimaryGeneratedColumn,
+    UpdateDateColumn,
 } from "typeorm";
 import { Invoice } from "./invoice.schema";
 import { Member } from "./member.schema";
@@ -29,19 +31,22 @@ export class Membership {
     @Column({ type: "timestamp", nullable: false })
     startDate: Date;
 
-    @Column({ type: "timestamp", nullable: true })
+    @Column({ type: "timestamp", nullable: false })
     dueDate: Date;
 
-    @Column({ type: "timestamp" })
+    @Column({ type: "timestamp", nullable: true })
     monthlyDueDate: Date;
 
     @Column({ type: "boolean", default: true })
     isFirstMonth: boolean;
 
+    @Column({ type: "decimal", nullable: true })
+    monthlyAmount: number;
+
     @Column({ type: "decimal" })
     totalAmount: number;
 
-    @Column()
+    @Column({ nullable: true })
     memberId: string;
 
     @ManyToOne(() => Member, (member) => member.memberships)
@@ -50,4 +55,10 @@ export class Membership {
 
     @OneToMany(() => Invoice, (invoice) => invoice.membership)
     invoices: Invoice[];
+
+    @CreateDateColumn({ type: "timestamp" })
+    createdAt: Date;
+
+    @UpdateDateColumn({ type: "timestamp" })
+    updatedAt: Date;
 }

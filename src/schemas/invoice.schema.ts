@@ -1,9 +1,11 @@
 import {
     Column,
+    CreateDateColumn,
     Entity,
     JoinColumn,
     ManyToOne,
     PrimaryGeneratedColumn,
+    UpdateDateColumn,
 } from "typeorm";
 import { Membership } from "./membership.schema";
 
@@ -24,4 +26,10 @@ export class Invoice {
     @ManyToOne(() => Membership, (mmebership) => mmebership.invoices)
     @JoinColumn({ name: "membershipId" })
     membership: Membership;
+
+    @CreateDateColumn({ type: "timestamp" })
+    createdAt: Date;
+
+    @UpdateDateColumn({ type: "timestamp" })
+    updatedAt: Date;
 }

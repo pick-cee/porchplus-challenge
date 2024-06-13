@@ -1,73 +1,80 @@
-<p align="center">
-  <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo-small.svg" width="200" alt="Nest Logo" /></a>
-</p>
+# Fitness+ Backend
 
-[circleci-image]: https://img.shields.io/circleci/build/github/nestjs/nest/master?token=abc123def456
-[circleci-url]: https://circleci.com/gh/nestjs/nest
+## Overview
 
-  <p align="center">A progressive <a href="http://nodejs.org" target="_blank">Node.js</a> framework for building efficient and scalable server-side applications.</p>
-    <p align="center">
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/v/@nestjs/core.svg" alt="NPM Version" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/l/@nestjs/core.svg" alt="Package License" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/dm/@nestjs/common.svg" alt="NPM Downloads" /></a>
-<a href="https://circleci.com/gh/nestjs/nest" target="_blank"><img src="https://img.shields.io/circleci/build/github/nestjs/nest/master" alt="CircleCI" /></a>
-<a href="https://coveralls.io/github/nestjs/nest?branch=master" target="_blank"><img src="https://coveralls.io/repos/github/nestjs/nest/badge.svg?branch=master#9" alt="Coverage" /></a>
-<a href="https://discord.gg/G7Qnnhy" target="_blank"><img src="https://img.shields.io/badge/discord-online-brightgreen.svg" alt="Discord"/></a>
-<a href="https://opencollective.com/nest#backer" target="_blank"><img src="https://opencollective.com/nest/backers/badge.svg" alt="Backers on Open Collective" /></a>
-<a href="https://opencollective.com/nest#sponsor" target="_blank"><img src="https://opencollective.com/nest/sponsors/badge.svg" alt="Sponsors on Open Collective" /></a>
-  <a href="https://paypal.me/kamilmysliwiec" target="_blank"><img src="https://img.shields.io/badge/Donate-PayPal-ff3f59.svg"/></a>
-    <a href="https://opencollective.com/nest#sponsor"  target="_blank"><img src="https://img.shields.io/badge/Support%20us-Open%20Collective-41B883.svg" alt="Support us"></a>
-  <a href="https://twitter.com/nestframework" target="_blank"><img src="https://img.shields.io/twitter/follow/nestframework.svg?style=social&label=Follow"></a>
-</p>
-  <!--[![Backers on Open Collective](https://opencollective.com/nest/backers/badge.svg)](https://opencollective.com/nest#backer)
-  [![Sponsors on Open Collective](https://opencollective.com/nest/sponsors/badge.svg)](https://opencollective.com/nest#sponsor)-->
+Fitness+ is a gym membership management system that offers various billing structures including annual memberships with upfront payments and monthly memberships with add-on services. This backend system handles member registration, membership management, invoicing, and automated reminders for upcoming payments.
 
-## Description
+### Features
 
-[Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
+<dl> 1. Member Management
 
-## Installation
+-   Register new members
+</dl>
 
-```bash
-$ npm install
+<dl> 2. Membership Management
+
+-   Create annual and monthly memberships
+-   Convert existing memberships to monthly plans with add-on services
+</dl>
+
+<dl>3. Invoicing
+
+-   Generate invoices for annual memberships
+-   Generate invoices for monthly services
+-   Handle first-month combined billing (annual fee + first month's service)
+</dl>
+<dl>4. Automated Reminders
+
+-   Daily cron job to check for upcoming payments
+-   Email reminders for annual membership renewals (7 days before due date)
+-   Email reminders for monthly service charges (within the due month)
+-   Differentiated reminders for new members' first month and existing members' subsequent months
+</dl>
+<dl>5. RESTful API
+
+-   Well-documented endpoints for all CRUD operations
+</dl>
+<dl>6. Tech Stack
+
+-   Framework: NestJS
+-   Database: PostgreSQL
+-   ORM: TypeORM
+-   Task Scheduling: @nestjs/schedule
+-   Email Service: Novu
+</dl>
+
+### Setup and Installation
+
+1. Clone the repository: <br>
+   <code>
+   git clone https://github.com/pick-cee/porchplus-challenge
+   <br>
+   cd porchplus-challenge
+   </code>.
+
+2. Install dependencies:<br>
+   <code>npm install</code>.
+
+3. Set up environment variables: Create a .env file in the root directory with the following variables<br>
+
+```
+PORT=
+
+POSTGRES_HOST=
+POSTGRES_USERNAME=
+POSTGRES_PASSWORD=
+POSTGRES_DATABASE=
+
+NOVU_API_KEY=
 ```
 
-## Running the app
+4. Start the server: <br>
+   <code> npm run start:dev</code>
 
-```bash
-# development
-$ npm run start
+### Conclusion
 
-# watch mode
-$ npm run start:dev
+This application performs an automated check every midnight to send reminders where necessary.
 
-# production mode
-$ npm run start:prod
-```
+### Contact
 
-## Test
-
-```bash
-# unit tests
-$ npm run test
-
-# e2e tests
-$ npm run test:e2e
-
-# test coverage
-$ npm run test:cov
-```
-
-## Support
-
-Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
-
-## Stay in touch
-
-- Author - [Kamil Myśliwiec](https://kamilmysliwiec.com)
-- Website - [https://nestjs.com](https://nestjs.com/)
-- Twitter - [@nestframework](https://twitter.com/nestframework)
-
-## License
-
-Nest is [MIT licensed](LICENSE).
+Akinloluwa Olumuyide - <email>akinloluwaolumuyide@gmail.com</email>.

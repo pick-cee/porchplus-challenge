@@ -1,4 +1,11 @@
-import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from "typeorm";
+import {
+    Column,
+    CreateDateColumn,
+    Entity,
+    OneToMany,
+    PrimaryGeneratedColumn,
+    UpdateDateColumn,
+} from "typeorm";
 import { Membership } from "./membership.schema";
 
 @Entity({ name: "Member" })
@@ -17,4 +24,10 @@ export class Member {
 
     @OneToMany(() => Membership, (membership) => membership.member)
     memberships: Membership[];
+
+    @CreateDateColumn({ type: "timestamp" })
+    createdAt: Date;
+
+    @UpdateDateColumn({ type: "timestamp" })
+    updatedAt: Date;
 }

@@ -1,16 +1,15 @@
 import { IsEmail, IsNotEmpty, IsString } from "class-validator";
 
-
 export class CreateMemberDto {
     @IsString()
     @IsNotEmpty()
-    firstName: string
+    firstName: string;
 
     @IsString()
     @IsNotEmpty()
-    lastName: string
+    lastName: string;
 
     @IsEmail()
     @IsNotEmpty()
-    email: string
+    email: string;
 }
