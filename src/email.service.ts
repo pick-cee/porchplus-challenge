@@ -9,9 +9,9 @@ import { Novu } from "@novu/node";
 import { AnnualEmailDto, FirstMonthReminderDto, MonthlyEmailDto } from "./DTOS";
 
 @Injectable()
-export class EmailSevice {
+export class EmailService {
     private novu: Novu;
-    private logger = new Logger(EmailSevice.name);
+    private logger = new Logger(EmailService.name);
     constructor(private readonly configSvc: ConfigService) {
         this.novu = new Novu(this.configSvc.get<string>("NOVU_API_KEY"));
     }

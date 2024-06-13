@@ -2,7 +2,7 @@ import { Injectable, Logger } from "@nestjs/common";
 import { InjectRepository } from "@nestjs/typeorm";
 import { Membership } from "./schemas";
 import { Repository } from "typeorm";
-import { EmailSevice } from "./email.service";
+import { EmailService } from "./email.service";
 import { AppService } from "./app.service";
 import { Cron, CronExpression } from "@nestjs/schedule";
 import * as moment from "moment";
@@ -14,11 +14,11 @@ export class ScheduleService {
     constructor(
         @InjectRepository(Membership)
         private membershipRepo: Repository<Membership>,
-        private emailSvc: EmailSevice,
+        private emailSvc: EmailService,
         private invoiceSvc: AppService,
-    ) {}
+    ) { }
 
-    @Cron(CronExpression.EVERY_30_SECONDS)
+    @Cron(CronExpression.EVERY_DAY_AT_MIDNIGHT)
     async handleCron() {
         this.logger.log(`Running daily membersip fee reminder cron job`);
 
