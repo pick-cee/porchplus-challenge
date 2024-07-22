@@ -18,7 +18,7 @@ export class ScheduleService {
         private invoiceSvc: AppService,
     ) { }
 
-    @Cron(CronExpression.EVERY_DAY_AT_MIDNIGHT)
+    @Cron(CronExpression.EVERY_30_SECONDS)
     async handleCron() {
         this.logger.log(`Running daily membersip fee reminder cron job`);
 
